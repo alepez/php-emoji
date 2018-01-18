@@ -125,6 +125,13 @@
 		$out = array();
 
 		foreach ($map as $row){
+			if (isset($row['skin_variations'])) {
+				foreach ($row['skin_variations'] as $row){
+					$hex = unicode_hex_chars($row['unified']);
+					$bytes = unicode_bytes($row['unified']);
+					$out[$bytes] = strtolower($row['unified']);
+				}
+			}
 
 			$hex = unicode_hex_chars($row['unified']);
 			$bytes = unicode_bytes($row['unified']);
